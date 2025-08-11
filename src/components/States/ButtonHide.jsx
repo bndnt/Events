@@ -1,5 +1,8 @@
 import { useState } from "react";
-export default function ButtonHide() {
+export default function ButtonHide({ children }) {
+  //     children — это не совсем «зарезервированное слово» в синтаксисе JavaScript, но это специальное свойство (prop), которое React автоматически передаёт любому компоненту.
+
+  // Всё, что ты пишешь между открывающим и закрывающим тегом компонента, React положит в этот children.
   const [isOpen, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -7,14 +10,7 @@ export default function ButtonHide() {
   };
   return (
     <div>
-      {isOpen && (
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam id
-          expedita a reprehenderit, vel mollitia eaque pariatur necessitatibus
-          ex dolore. Alias quis accusantium eveniet esse ratione totam
-          architecto distinctio saepe.
-        </p>
-      )}
+      {isOpen && <div>{children}</div>}
       <button onClick={handleOpen}>{isOpen ? "Hide" : "Show"}</button>{" "}
     </div>
   );
