@@ -5,6 +5,7 @@ import "./App.css";
 
 import ButtonClicks from "./components/States/ButtonClicks";
 import ButtonHide from "./components/States/ButtonHide";
+import ObjectChange from "./components/States/ObjectChange";
 // function App() {
 //   // const handleClick = () => {
 //   //   alert("Congrats!!");
@@ -118,6 +119,7 @@ const App = () => {
     <>
       <ClickCounter value={clickSecond} onUpdate={handleClicksSecond} />
       <ClickCounter value={clickSecond} onUpdate={handleClicksSecond} />
+      <ObjectChange />
     </>
   );
 };
