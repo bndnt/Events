@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 import ButtonClicks from "./components/States/ButtonClicks";
-
+import ButtonHide from "./components/States/ButtonHide";
 // function App() {
 //   // const handleClick = () => {
 //   //   alert("Congrats!!");
@@ -92,6 +92,11 @@ import ButtonClicks from "./components/States/ButtonClicks";
 // Перепишемо код з використанням стану. Щоб додати змінну стану, імпортуйте useState з React угорі файлу компонента.
 
 const App = () => {
-  return <ButtonClicks />;
+  return (
+    <div>
+      <ButtonClicks />
+      <ButtonHide />
+    </div>
+  );
 };
 export default App;
