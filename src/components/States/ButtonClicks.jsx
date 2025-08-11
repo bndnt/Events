@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ButtonClicks = () => {
   const [clicks, setClicks] = useState(0);
@@ -6,6 +6,9 @@ const ButtonClicks = () => {
   const handleClick = () => {
     setClicks(clicks + 1);
   };
+  useEffect(() => {
+    document.title = `Clicked ${clicks} times`;
+  });
 
   return (
     <>

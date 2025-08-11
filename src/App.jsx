@@ -117,6 +117,7 @@ const App = () => {
     // </div>
 
     <>
+      <ButtonClicks />
       <ClickCounter value={clickSecond} onUpdate={handleClicksSecond} />
       <ClickCounter value={clickSecond} onUpdate={handleClicksSecond} />
       <ObjectChange />
