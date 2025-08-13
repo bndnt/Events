@@ -1,23 +1,45 @@
 import { useState, useEffect } from "react";
 
 const ButtonClicks = () => {
-  const [clicks, setClicks] = useState(0);
+  // const [clicks, setClicks] = useState(0); - it was before
+  const [clicks, setClicks] = useState(() => {
+    const savedClicks = window.localStorage.getItem("saved-clicks");
+    // Якщо ви працюєте із складними типами даних, такими як об'єкт чи масив, не забувайте робити розбір значення за допомогою JSON.parse. В іншому випадку, замість об'єкта чи масиву ви запишете до стану їх стрічне представлення.
+    // if (savedObject !== null) {
+    //   return JSON.parse(savedObject);
+    // }
+    if (savedClicks != null) {
+      return savedClicks;
+    }
+    return 0;
+  });
 
-  const handleClick = () => {
-    setClicks(clicks + 1);
-  };
   useEffect(() => {
     document.title = `Clicked ${clicks} times`;
   });
+  // У ефекті додаємо код запису в локальне сховище. Ключ - це довільний рядок, наприклад, "saved-clicks", а значення - це стан clicks.
   // Хук useEffect не повертає жодного значення як результат своєї роботи, а лише запускає виконання анонімної функції. Іншими словами, неможливо виконати в середині функції обчислення і повернути їх у зовнішній код. Ефекти не призначені для цього!
   // useEffect(() => {
   //   // ...
   // }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem("saved-clicks", clicks);
+    // Якщо ви працюєте із складними типами даних, такими як об'єкт чи масив, не забувайте перетворити збережене значення у рядок за допомогою JSON.stringify.
+    // window.localStorage.setItem("key", JSON.stringify({}));
+  }, [clicks]);
+
   return (
-    <>
-      <button onClick={handleClick}>Current: {clicks}</button>
-    </>
+    <div className="containerExamples">
+      {/* const handleClick = () => {
+    setClicks(clicks + 1);
+  }; */}
+      <button onClick={() => setClicks((prev) => Number(prev) + 1)}>
+        {" "}
+        You clicked {clicks} times
+      </button>
+      <button onClick={() => setClicks(0)}>Reset</button>
+    </div>
   );
 };
 export default ButtonClicks;

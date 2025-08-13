@@ -9,7 +9,7 @@ export default function ButtonHide({ children }) {
     setOpen(!isOpen);
   };
   return (
-    <div>
+    <div className="containerExamples">
       {isOpen && <div>{children}</div>}
       <button onClick={handleOpen}>{isOpen ? "Hide" : "Show"}</button>{" "}
     </div>

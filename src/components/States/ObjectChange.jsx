@@ -29,7 +29,7 @@ export default function ObjectChange() {
     console.log("X and Y updated:", values.x, values.y);
   }, [values.x, values.y]);
   return (
-    <div>
+    <div className="containerExamples">
       <p>
         x:{values.x}, y:{values.y}
       </p>
